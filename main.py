@@ -10,12 +10,14 @@ if __name__ == '__main__':
     # print('Binario: ',ans_b)
     # print('Hexadecimal:',ans_h)
 
-
-    m = 'Introduccion a la criptografia y seguridad de la informacion.'
-    m = sha512.string_to_binary(m)
-    c = sha512.sha512n(m, 2)    
-    print(sha512.binary_to_hex(c))
-
+    h = "84D1E9011356D81E4CE920BE520D8FAA0FC1699A988268C08D418FF134F871A3C3E42EF1B47345AB342AD17979E00702674989E0972CB48159D011C39CB79476"
+    with open('passwords.txt','r') as f:
+        for password in f.readlines():
+            m = sha512.string_to_binary(password)
+            c = sha512.sha512n(m,9)
+            if sha512.binary_to_hex(c).upper() == h:
+                print(password)
+                exit(1)
 
     # s = '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF'
     # b = sha512.hex_to_binary(s)
