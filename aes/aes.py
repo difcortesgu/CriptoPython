@@ -517,30 +517,3 @@ def benchmark():
         aes.encrypt_block(message)
 
 __all__ = [encrypt, decrypt, AES]
-
-if __name__ == '__main__':
-    # import sys
-    # write = lambda b: sys.stdout.buffer.write(b)
-    # read = lambda: sys.stdin.buffer.read()
-
-    # if len(sys.argv) < 2:
-    #     print('Usage: ./aes.py encrypt "key" "message"')
-    #     print('Running tests...')
-    #     from tests import *
-    #     run()
-    # elif len(sys.argv) == 2 and sys.argv[1] == 'benchmark':
-    #     benchmark()
-    #     exit()
-    # elif len(sys.argv) == 3:
-    #     text = read()
-    # elif len(sys.argv) > 3:
-    #     text = ' '.join(sys.argv[2:])
-
-    # if 'encrypt'.startswith(sys.argv[1]):
-    #     write(encrypt(sys.argv[2], text))
-    # elif 'decrypt'.startswith(sys.argv[1]):
-    #     write(decrypt(sys.argv[2], text))
-    # else:
-    #     print('Expected command "encrypt" or "decrypt" in first argument.')
-
-    print(encrypt('my secret key', b'0' * 1000000)) # 1 MB encrypted in 20 seconds.

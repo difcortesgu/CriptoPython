@@ -9,12 +9,12 @@ if __name__ == '__main__':
     # ans_h = sha512.binary_to_hex(ans_b)
     # print('Binario: ',ans_b)
     # print('Hexadecimal:',ans_h)
-
-    h = "84D1E9011356D81E4CE920BE520D8FAA0FC1699A988268C08D418FF134F871A3C3E42EF1B47345AB342AD17979E00702674989E0972CB48159D011C39CB79476"
+    
+    h = "27A664AC8617075FC27FEEB4609C96011D17203FE9431390DE1B287E63CC5F3C3EA99606EE416463755B83C2CEA6AAB8C9F8CC609282DEE2B43E1BB0DA93D842"
     with open('passwords.txt','r') as f:
         for password in f.readlines():
-            m = sha512.string_to_binary(password)
-            c = sha512.sha512n(m,9)
+            m = sha512.string_to_binary(password.rstrip('\n'))
+            c = sha512.sha512n(m,13)
             if sha512.binary_to_hex(c).upper() == h:
                 print(password)
                 exit(1)
@@ -32,6 +32,3 @@ if __name__ == '__main__':
     # print('test de poker', tp)
     # print('test de corrido', tc)
     # print('test de autocorrelation', ta)
-
-
-

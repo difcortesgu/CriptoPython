@@ -12,7 +12,7 @@ class AES_PRBG():
     def next_bit(self):
         if self.bits.empty():
             m = bytes(self.counter) + b'0' * (16 - len(bytes(self.counter)))
-            self.counter = 
+            self.counter += 1
             cypher = AES(self.key)
             c = cypher.encrypt_block(m)
             c = int(c.hex(), 16) ^ int(self.IV.hex(), 16)
