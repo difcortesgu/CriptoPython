@@ -11,6 +11,10 @@ def inverso_Zn(a, n):
     return x
 
 def sistema_ecuaciones(a, n):
+    for i in n:
+        for j in n:
+            d,x,y = gcd_ext(i, j)
+            assert d == 1
     N = 1
     for ni in n:
         N *= ni
@@ -20,9 +24,8 @@ def sistema_ecuaciones(a, n):
         yi = inverso_Zn(Ni, ni)
         x += (Ni * yi * ai) % N
     return x
-n = list(range(2,24))
-a =  [1] * 21
-a.append(0)
+n = [2,3,4,5,6,7]
+a = [1,1,1,1,1,0]
 x = sistema_ecuaciones( a, n)
 
 for ai, ni in zip(a, n):
