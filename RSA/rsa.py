@@ -6,15 +6,27 @@ def gcd_ext(a,b):
     (d_, x_, y_) = gcd_ext(b, a % b)
     return (d_, y_, (x_ - math.floor(a / b) * y_)) 
 
-def inverse_Zn(a, n):
+def inverso_Zn(a, n):
     d,x,y = gcd_ext(a, n)
     return x
 
-a = 10
-m = 3571
-for x in range(m):
-    if (a * x) % m == 1:
-        print(x)
+def sistema_ecuaciones(a, n):
+    N = 1
+    for ni in n:
+        N *= ni
+    x = 0
+    for ai, ni in zip(a, n):
+        Ni = int(N / ni)
+        yi = inverso_Zn(Ni, ni)
+        x += (Ni * yi * ai) % N
+    return x
+n = list(range(2,24))
+a =  [1] * 21
+a.append(0)
+x = sistema_ecuaciones( a, n)
 
-d, x, y = gcd_ext(m, a)
-print(y)
+for ai, ni in zip(a, n):
+    print(x % ni, ai)
+
+print(x)
+
